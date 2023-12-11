@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import * as Animatable from 'react-native-animatable'
-
+import {useNavigation} from '@react-navigation/native'
 export default function BemVindo() {
+    const navigation = useNavigation();
     return (
         <View style={style.container}>
             <View style={style.containerLogo}>
@@ -17,7 +18,7 @@ export default function BemVindo() {
             <Animatable.View delay={800} animation={"fadeInUp"} style={style.containerForm}>
                 <Text style={style.title}>Monitore a segurança de qualquer lugar</Text>
                 <Text style={style.text}>Faça o login</Text>
-                <TouchableOpacity style={style.btn}>
+                <TouchableOpacity style={style.btn} onPress={()=> navigation.navigate('Login')}>
                     <Text style={style.btnText}>Acessar</Text>
                 </TouchableOpacity>
             </Animatable.View>

@@ -1,8 +1,11 @@
 import { View, Text, StyleSheet,TextInput,TouchableOpacity } from 'react-native';
 import React from 'react';
 import * as Animatable from 'react-native-animatable'
+import {useNavigation} from '@react-navigation/native'
 
 export default function BemVindo() {
+    const navigation = useNavigation();
+    
     return (
         <View style={style.container}>
             <Animatable.View animation={"fadeInLeft"} delay={800} style={style.containerHeader}>
@@ -16,7 +19,7 @@ export default function BemVindo() {
                 <Text style={style.senha}>Senha</Text>
                 <TextInput placeholder='Digite sua senha' style ={style.txtSenha}/>
 
-                <TouchableOpacity style={style.btnLogar}>
+                <TouchableOpacity style={style.btnLogar} onPress={()=>{navigation.navigate('Dash')}}>
                     <Text style={style.btnText}>Logar</Text>
                 </TouchableOpacity>
             </Animatable.View>

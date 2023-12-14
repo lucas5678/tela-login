@@ -3,6 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ChartPizza from '../components/chartPizza'
+import * as Animatable from 'react-native-animatable'
 
 export default function Dash() {
     const [posts, setposts] = useState([]);
@@ -28,12 +29,17 @@ export default function Dash() {
                 <Text style={{borderRadius:8, width:"90%", textAlign:'center',color:"#fff", fontSize: 18, marginLeft: 5, backgroundColor:"blue", marginTop:5 }}>Em andamento: {posts.andamento}</Text>
             </View>
 
-            <View style={style.containerChart}>
+            <Animatable.View delay={500} animation={"fadeInUp"} style={style.containerChart}>
                 <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Desvios</Text>
                 <View style={style.chart}>
                     <ChartPizza atraso={posts.atraso} concluido={posts.concluido} andamento={posts.andamento}/>
                 </View>
-            </View>
+            </Animatable.View>
+
+            <Animatable.View delay={800} animation={"fadeInUp"} style={style.containerList}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Lista</Text>
+                
+            </Animatable.View>
         </View>
     )
 }
@@ -54,7 +60,18 @@ const style = StyleSheet.create({
     containerChart: {
         width: "92%",
         backgroundColor: "#fff",
-        height: "30%",
+        height: "35%",
+        padding: 4,
+        marginLeft: 15,
+        alignContent: 'center',
+        alignItems: 'center',
+        borderRadius: 8
+    },
+    containerList: {
+        width: "92%",
+        marginTop:10,
+        backgroundColor: "#fff",
+        height: "35%",
         padding: 4,
         marginLeft: 15,
         alignContent: 'center',
